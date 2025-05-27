@@ -14,6 +14,10 @@ st.set_page_config(
 
 # File lưu trữ dữ liệu
 DATA_FILE = "game_data.json"
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
+        json.dump({"players": {}, "debits": []}, f, ensure_ascii=False, indent=2)
+
 
 class Debit:
     def __init__(self, user_id1, user_id2, amount):
